@@ -241,6 +241,12 @@
             align-items: center;
             border-bottom: 3px dotted var(--border-heavy);
             padding: 1.2rem 0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .blueprint-item:hover {
+            background: rgba(22, 23, 22, 0.05);
         }
 
         .blueprint-item:last-child {
@@ -272,6 +278,7 @@
             background-color: var(--bg-canvas);
             box-shadow: 5px 5px 0px var(--border-heavy);
             transition: all 0.1s ease;
+            cursor: pointer;
         }
 
         .btn-action:hover {
@@ -313,6 +320,87 @@
 
         .pipeline-link:hover {
             color: var(--text-solid);
+        }
+
+        /* Dynamic Pop-up Modal Subsystem */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(22, 23, 22, 0.7);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal-box {
+            background: var(--bg-container);
+            border: 4px solid var(--border-heavy);
+            box-shadow: 12px 12px 0px var(--text-solid);
+            max-width: 650px;
+            width: 100%;
+            padding: 3rem;
+            position: relative;
+            animation: modalPop 0.2s ease-out;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--text-solid);
+            color: var(--bg-canvas);
+            border: none;
+            font-family: 'Arial Black', sans-serif;
+            padding: 0.3rem 0.7rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-umber);
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--border-heavy);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-content p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .playlist-preview {
+            background: var(--bg-canvas);
+            border: 2px solid var(--border-heavy);
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .playlist-preview ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .playlist-preview li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
         }
 
         /* Rigid Double-Border Footer */
@@ -414,7 +502,7 @@
                     <span class="stamp-id">Creative Output // Book Writing</span>
                     <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">The Diary Written in Someone Else's Blood</h2>
                     <p style="font-size: 1rem; margin-bottom: 1.5rem;">My debut step into creative writing and long-form narrative. This story project pushed me to navigate deep character pacing and self-published layout design.</p>
-                    <a href="#" class="btn-action">Read Specs</a>
+                    <button class="btn-action" onclick="openModal('diary')">Read Specs</button>
                 </div>
             </div>
 
@@ -425,7 +513,7 @@
                     <span class="stamp-id">Creative Output // Literary Narrative</span>
                     <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">The Cottage Of First Love</h2>
                     <p style="font-size: 1rem; margin-bottom: 1.5rem;">An independent literary exploration exploring thematic prose structure. This asset highlights my ongoing experimentation with formatting layout and cover visuals.</p>
-                    <a href="#" class="btn-action">Read Specs</a>
+                    <button class="btn-action" onclick="openModal('cottage')">Read Specs</button>
                 </div>
             </div>
         </div>
@@ -439,7 +527,7 @@
                 <span class="stamp-id">Freelance Discipline // Graphic Design & Music Subcultures</span>
                 <h2>Graphic Exploration & Sonic Influence</h2>
                 <p>I am constantly scaling up my graphic design capabilities. A great deal of my visual identity is inspired by my hobby of diving into alternative music subcultures. I study the raw, high-contrast aesthetics and historic album arts of Nu Metal, Thrash Metal, Hard Rock, Glam Metal, and Grunge, injecting that bold energy directly into my freelance layouts.</p>
-                <a href="#" class="btn-action">View Design Samples</a>
+                <button class="btn-action" onclick="openModal('design')">View Design Samples</button>
             </div>
         </section>
 
@@ -447,21 +535,21 @@
 
         <!-- Section 5: Blueprint Tracks Engine Area -->
         <section id="blueprints" class="audio-blueprint-box">
-            <span class="stamp-id">Acoustic Feed // Hobby & Design Matrix</span>
+            <span class="stamp-id">Acoustic Feed // Hobby & Design Matrix (Click rows for logs)</span>
             
-            <div class="blueprint-item">
+            <div class="blueprint-item" onclick="openModal('numetal')">
                 <div class="blueprint-title">Nu Metal & Thrash Mechanics</div>
                 <div class="blueprint-label-tag">Rhythm Cadence</div>
             </div>
-            <div class="blueprint-item">
+            <div class="blueprint-item" onclick="openModal('grunge')">
                 <div class="blueprint-title">Hard Rock, Glam & Grunge History</div>
                 <div class="blueprint-label-tag">Melodic Velocity</div>
             </div>
-            <div class="blueprint-item">
+            <div class="blueprint-item" onclick="openModal('albumart')">
                 <div class="blueprint-title">Album Cover Design & Visual Layout Asset Creation</div>
                 <div class="blueprint-label-tag">Graphic Hobby</div>
             </div>
-            <div class="blueprint-item">
+            <div class="blueprint-item" onclick="openModal('writing')">
                 <div class="blueprint-title">Independent Literature & Conceptual Storytelling Prose</div>
                 <div class="blueprint-label-tag">Creative Writing</div>
             </div>
@@ -477,10 +565,85 @@
 
     </main>
 
+    <!-- Dynamic Popup Modal Wrapper System -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">Close [X]</button>
+            <div class="modal-content" id="modalTarget">
+                <!-- JavaScript handles context replacement dynamically here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Rigid Foundation Footer -->
     <footer>
         <p>&copy; 2026 Zenith Rijal. Powered by Student Ambition & Design Experiments. Deumai-4, Ilam, Nepal.</p>
     </footer>
 
+    <!-- Interactive Logic Blueprint -->
+    <script>
+        const modalData = {
+            diary: {
+                title: "The Diary Written in Someone Else's Blood",
+                body: "This project serves as my primary exploration into darker, atmospheric storytelling. Written as an independent narrative exercise, it breaks open structural prose conventions while testing my design capacity for text formatting and layout symmetry."
+            },
+            cottage: {
+                title: "The Cottage Of First Love",
+                body: "A creative counter-balance to my darker work, focusing heavily on character subtext, emotional pacing, and structural narrative progression. This book functions as a test bed for classic book layout standards, pagination mapping, and clean front-cover asset curation."
+            },
+            design: {
+                title: "Graphic Design & Client Sample Log",
+                body: "Welcome to the design showcase. I focus on raw visual assets including dynamic high-contrast poster templates, raw branding marks, texturizing treatments, and rough layout systems tailored for small musical setups and independent authors.",
+                playlist: ["• Custom Cover Layout Templates", "• Screen-Print Style Vector Graphics", "• Heavy Textural Overlays", "• Brutalist Typography Formats"]
+            },
+            numetal: {
+                title: "Nu Metal & Thrash Rhythms",
+                body: "A breakdown of raw musical influences. My creative tempo comes from analyzing thick riffs and structural rhythm cadences.",
+                playlist: ["• Slipknot — Iowa (Production Style)", "• Metallica — Master of Puppets (Rhythm Arrangement)", "• Linkin Park — Hybrid Theory (Dynamic Contrast)", "• Slayer — Reign in Blood (Speed & Layout Intensity)"]
+            },
+            grunge: {
+                title: "Hard Rock, Glam & Grunge Archive",
+                body: "Exploring spatial melodies and classic vocal tracking distributions across iconic raw rock domains.",
+                playlist: ["• Nirvana — In Utero (Raw Acoustic Balance)", "• Mötley Crüe — Shout at the Devil (Visual Energy)", "• Alice in Chains — Dirt (Harmonic Tension)", "• Guns N' Roses — Appetite for Destruction"]
+            },
+            albumart: {
+                title: "Album Cover Design Principles",
+                body: "Analyzing historical audio sleeves to decode what makes packaging memorable. I look closely at asymmetric font alignment, deliberate grain application, and low-contrast imagery pairings."
+            },
+            writing: {
+                title: "Creative Writing Manifestos",
+                body: "Documenting thoughts on writing methodology. Focusing heavily on tense control, realistic dialogue building, and using suspense patterns inside underground narrative structures."
+            }
+        };
+
+        function openModal(key) {
+            const data = modalData[key];
+            if (!data) return;
+
+            let contentHtml = `<h3>${data.title}</h3><p>${data.body}</p>`;
+            
+            if (data.playlist) {
+                contentHtml += `<div class="playlist-preview"><strong>Index Log:</strong><ul style="margin-top:0.5rem;">`;
+                data.playlist.forEach(item => {
+                    contentHtml += `<li>${item}</li>`;
+                });
+                contentHtml += `</ul></div>`;
+            }
+
+            document.getElementById('modalTarget').innerHTML = contentHtml;
+            document.getElementById('infoModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Unlock background scrolling
+        }
+
+        // Close when clicking outside the main window box
+        document.getElementById('infoModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 </body>
 </html>
