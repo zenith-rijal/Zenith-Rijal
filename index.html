@@ -158,12 +158,19 @@
             box-shadow: var(--shadow-brutal);
         }
 
-        /* Staggered Content Architecture Rows */
+        /* Staggered Content Architecture Rows & Grid Split */
         .asymmetric-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
+            margin-bottom: 7rem;
+        }
+
+        .book-twin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 7rem;
         }
 
@@ -327,7 +334,7 @@
                 padding: 2rem;
                 gap: 3rem;
             }
-            .asymmetric-row, .asymmetric-row.flipped {
+            .asymmetric-row, .asymmetric-row.flipped, .book-twin-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
                 direction: ltr;
@@ -358,6 +365,7 @@
 </head>
 <body>
 
+    <!-- Header Navigation System -->
     <header>
         <div class="header-inner">
             <a href="#" class="brand-logo">ZR // <span>CREATIVE</span></a>
@@ -373,6 +381,7 @@
 
     <main class="master-grid">
 
+        <!-- Section 1: Hero Block (About Me) -->
         <section id="about" class="editorial-hero">
             <div class="hero-image-frame">
                 <img src="zenith-photo.jpg" alt="Zenith Rijal Portfolio Shot">
@@ -387,32 +396,47 @@
             </div>
         </section>
 
+        <!-- Section 2: Motto (My Perspective) -->
         <section id="perspective" class="tactical-manifesto">
             <span class="stamp-id" style="color: var(--accent-tan);">My Growth Philosophy</span>
             <blockquote>"I approach both engineering and the arts with the same mindset: stay curious, keep building, and never stop learning."</blockquote>
             <p>I am building my skill sets across multiple disciplines. Learning the deliberate execution of structural drawing in the classroom directly translates to how I balance white space, construct typography weights, and design graphic assets for freelance clients.</p>
         </section>
 
-        <h2 class="section-headline">Projects & Creation Labs</h2>
+        <h2 class="section-headline">Literary Publications</h2>
 
-        <section id="projects" class="asymmetric-row">
+        <!-- Section 3: Dual Book Project Showcase (Side-by-Side) -->
+        <div id="projects" class="book-twin-grid">
+            <!-- Book 1 -->
             <div class="row-media-box">
                 <img src="book-cover.jpg" alt="The Diary Written in Someone Else's Blood First Edition Publication">
+                <div class="row-text-packet" style="margin-top: 1.5rem;">
+                    <span class="stamp-id">Creative Output // Book Writing</span>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">The Diary Written in Someone Else's Blood</h2>
+                    <p style="font-size: 1rem; margin-bottom: 1.5rem;">My debut step into creative writing and long-form narrative. This story project pushed me to navigate deep character pacing and self-published layout design.</p>
+                    <a href="#" class="btn-action">Read Specs</a>
+                </div>
             </div>
-            <div class="row-text-packet">
-                <span class="stamp-id">Creative Output // Book Writing</span>
-                <h2>The Diary Written in Someone Else's Blood</h2>
-                <p>This is my debut long-form creative writing project. Authoring this story gave me practical, first-hand experience managing a deep narrative arc, building characters, and managing self-publishing layout structures and book cover asset presentation.</p>
-                <a href="#" class="btn-action">Read Project Specs</a>
-            </div>
-        </section>
 
+            <!-- Book 2 -->
+            <div class="row-media-box">
+                <img src="cover.jpg" alt="The Cottage Of First Love Publication Cover">
+                <div class="row-text-packet" style="margin-top: 1.5rem;">
+                    <span class="stamp-id">Creative Output // Literary Narrative</span>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">The Cottage Of First Love</h2>
+                    <p style="font-size: 1rem; margin-bottom: 1.5rem;">An independent literary exploration exploring thematic prose structure. This asset highlights my ongoing experimentation with formatting layout and cover visuals.</p>
+                    <a href="#" class="btn-action">Read Specs</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Hobbies & Graphic Design (Inspired by Rock Subcultures) -->
         <section class="asymmetric-row flipped">
             <div class="row-media-box">
                 <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" alt="High Contrast Bold Graphic Element Design">
             </div>
             <div class="row-text-packet">
-                <span class="stamp-id">Freelance固定 // Graphic Design & Music Subcultures</span>
+                <span class="stamp-id">Freelance Discipline // Graphic Design & Music Subcultures</span>
                 <h2>Graphic Exploration & Sonic Influence</h2>
                 <p>I am constantly scaling up my graphic design capabilities. A great deal of my visual identity is inspired by my hobby of diving into alternative music subcultures. I study the raw, high-contrast aesthetics and historic album arts of Nu Metal, Thrash Metal, Hard Rock, Glam Metal, and Grunge, injecting that bold energy directly into my freelance layouts.</p>
                 <a href="#" class="btn-action">View Design Samples</a>
@@ -421,6 +445,7 @@
 
         <h2 class="section-headline">The Blueprint Matrix</h2>
 
+        <!-- Section 5: Blueprint Tracks Engine Area -->
         <section id="blueprints" class="audio-blueprint-box">
             <span class="stamp-id">Acoustic Feed // Hobby & Design Matrix</span>
             
@@ -442,6 +467,7 @@
             </div>
         </section>
 
+        <!-- Section 6: Connection Terminal (Contact/Freelance Intake) -->
         <section id="connect" class="transmission-monolith">
             <span class="stamp-id">Freelance Intake // Open for Orders</span>
             <h2>Let's Build Something</h2>
@@ -451,6 +477,7 @@
 
     </main>
 
+    <!-- Rigid Foundation Footer -->
     <footer>
         <p>&copy; 2026 Zenith Rijal. Powered by Student Ambition & Design Experiments. Deumai-4, Ilam, Nepal.</p>
     </footer>
